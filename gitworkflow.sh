@@ -6,7 +6,7 @@ echo "Type your commit message:"
 echo "(no quotation marks)"
 read commitmsg
 
-if [ $commitmsg == "" ]; then
+if [ -z "$commitmsg" ]; then
 	echo "You did not include a commit message"
 	sleep 1
 	echo "Exiting script now..."
@@ -14,7 +14,7 @@ if [ $commitmsg == "" ]; then
 	exit
 else
 	git add --all
-	git commit -am \"$commitmsg\"
+	git commit -am "$commitmsg"
 	git push
 
 fi
