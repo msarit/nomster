@@ -36,6 +36,16 @@ h1, h2, h3, h4, h5, h6 {
   text-align: right;
 }
 
+.loginbutton {
+  background-color: #E88871;
+  border: none;
+}
+
+.loginbutton:hover {
+  background-color: #575857;
+  border: none;
+}
+
 /* PAGINATION STYLES - START */
 
 .digg_pagination {
