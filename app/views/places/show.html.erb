@@ -5,6 +5,7 @@
 <p><%= @place.description %></p>
 
 <div class="float-right">
-<p><%= link_to 'Edit Place', edit_place_path(@place), class: 'btn btn-primary loginbutton' %>
+<%= link_to 'Edit Place', edit_place_path(@place), class: 'btn btn-primary loginbutton' %>
+<%= link_to 'Back Home', root_path, class: 'btn btn-primary loginbutton' %>
 </div>
 </div>
