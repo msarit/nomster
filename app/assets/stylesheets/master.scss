@@ -46,14 +46,12 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
 }
 
-.loginbutton:focus {
-  background-color: #575857;
-  border: none;
+h1 a {
+    color: #E88871;
 }
 
-.loginbutton:active {
-  background-color: #575857;
-  border: none;
+h1 a:hover {
+    color: #a25f4f;
 }
 
 /* Changing Color of Focused Form Field - START */
