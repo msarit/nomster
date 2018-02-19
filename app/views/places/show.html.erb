@@ -1,9 +1,39 @@
-<div class="booyah-box col-10 offset-1 clearfix"
+<div class="booyah-box col-10 offset-1 clearfix">
 <h1><%= @place.name %></h1><br />
 <em><%= @place.address %></em>
 <br /><br />
 <p><%= @place.description %></p>
 
+<% if @place.latitude.present? && @place.longitude.present? %>
+
+  <script>
+
+  function initMap() {
+    var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: myLatLng
+      });
+
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+    }
+
+  </script>
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAX0xW-5oI2F8JWzPf_Gra2E1PJpU96k&callback=initMap">
+  </script>
+
+  <div id="map"></div>
+
+<% end %>
+
+<br /><br />
 <div class="float-right">
   <% if current_user && current_user == @place.user %>
 <%= link_to 'Edit Place', edit_place_path(@place), class: 'btn btn-primary loginbutton' %>
