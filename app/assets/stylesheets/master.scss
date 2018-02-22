@@ -79,6 +79,22 @@ h1 a:hover {
   margin-bottom: 10px;
 }
 
+label.control-label.file.optional {
+  display: none;
+}
+
+.imgbox:nth-of-type(2) {
+  float: left;
+  width: 22%;
+  margin-left: 3%;
+}
+
+.imgbox:nth-of-type(1) {
+  float: left;
+  width: 22%;
+  margin-left: 2%;
+}
+
 /* START - Styling Comments on Detail Page*/
 
 blockquote {
@@ -121,9 +137,9 @@ blockquote p {
   .digg_pagination .current {
     font-style: normal;
     font-weight: bold;
-    background: #2e6ab1;
+    background: grey;
     color: white;
-    border: 1px solid #2e6ab1; }
+    border: 1px solid grey; }
   .digg_pagination a {
     font-weight: bold;
     text-decoration: none;
