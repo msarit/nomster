@@ -7,7 +7,7 @@
 <p><%= @place.description %></p>
 
 <div class="row">
-<% @place.photos.each do |photo| %>
+<% @place.photos.shuffle.first(4).each do |photo| %>
 <div class="imgbox">
   <%= image_tag photo.picture %><br />
   <medium><strong><em><%= photo.caption %></em></strong></medium><br /><br />

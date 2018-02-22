@@ -83,16 +83,18 @@ label.control-label.file.optional {
   display: none;
 }
 
-.imgbox:nth-of-type(2) {
+.imgbox:nth-of-type(2),
+.imgbox:nth-of-type(3),
+.imgbox:nth-of-type(4) {
   float: left;
-  width: 22%;
-  margin-left: 3%;
+  width: 21%;
+  margin-left: 3.75%;
 }
 
 .imgbox:nth-of-type(1) {
   float: left;
-  width: 22%;
-  margin-left: 2%;
+  width: 21%;
+  margin-left: 1%;
 }
 
 /* START - Styling Comments on Detail Page*/
