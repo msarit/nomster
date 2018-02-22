@@ -4,7 +4,11 @@ class PhotosController < ApplicationController
   def create
     @place = Place.find(params[:place_id])
     @place.photos.create(photo_params)
-    redirect_to place_path(@place)
+      if @place.photos.create(photo_params).valid?
+        redirect_to place_path(@place)
+      else
+      render plain: 'ERROR: No picture attached; click "Back" button to go back', status: :unprocessable_entity
+      end
   end
 
   private

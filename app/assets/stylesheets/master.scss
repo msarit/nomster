@@ -79,7 +79,7 @@ h1 a:hover {
   margin-bottom: 10px;
 }
 
-label.control-label.file.optional {
+label.control-label.file.optional, label.control-label.file.required {
   display: none;
 }
 
