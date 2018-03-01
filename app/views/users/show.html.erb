@@ -1,6 +1,6 @@
-<div class="booyah-box">
+<div class="booyah-box col-10 offset-1">
   <div class="row">
-    <div class="col-4">
+    <div class="col-4 text-center">
   <%= image_tag 'woman.png', width: '200px' %>
 </div>
 <div class="col-8">
@@ -12,3 +12,20 @@
 </div>
 <div class="clear"></div>
 </div>
+</div>
+<br /><br />
+<h1 class="text-center">My Comments</h1>
+<br /><br />
+<% @user.comments.each do |comment| %>
+<div class="row col-10 offset-1">
+  <div class="col-12 col-sm-6">
+    <blockquote>
+      <% if comment.humanized_rating.present? %>
+      <strong><%= comment.humanized_rating %></strong> -
+      <% end %>
+      <%= comment.message %><br />
+      -- <%= link_to comment.place.name, place_path(comment.place) %>
+    </blockquote>
+  </div>
+</div>
+  <% end %>
