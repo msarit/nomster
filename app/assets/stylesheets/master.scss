@@ -103,6 +103,21 @@ label.control-label.file.optional, label.control-label.file.required {
   margin-right: 2.75%;
 }
 
+.carousel-caption {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 60px;
+  font-weight: 100;
+  text-shadow: rgba(0, 0, 0, 0.95) 2px 2px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.carousel {
+  box-shadow: 0px 3px 8px #2a2a2a;
+}
+
 /* START - Styling Comments on Detail Page*/
 
 blockquote {
