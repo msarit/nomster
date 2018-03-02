@@ -8,7 +8,7 @@
 
 <div class="row">
 <% @place.photos.shuffle.first(4).each do |photo| %>
-<div class="imgbox">
+<div class="imgbox col-12 col-sm-3">
   <%= image_tag photo.picture %><br />
   <medium><strong><em><%= photo.caption %></em></strong></medium><br /><br />
 </div>
