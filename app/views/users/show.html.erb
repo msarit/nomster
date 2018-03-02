@@ -9,7 +9,7 @@
       <h4><strong>Email Address:</strong> <%= @user.email %></h4>
       <h4><strong>Member Since:</strong> <%= @user.created_at.strftime("%B %d %Y") %></h4>
       <h4><strong># of Comments:</strong> <%= @user.comments.count %></h4>
-      <h4><strong># of 5-Star Ratings:</strong> <%= @user.comments.where(rating: '5-stars').count %></h4>
+      <h4><strong># of 5-Star Ratings:</strong> <%= @user.comments.where(rating: '5_stars').count %></h4>
     </div>
   <div class="clear"></div>
   </div>
@@ -25,7 +25,7 @@
   <% @user.comments.each do |comment| %>
     <div class="col-12 col-sm-6">
       <blockquote>
-        <%= link_to 'Delete', place_path(comment.place), method: :delete, data: {confirm: 'Are you SURE you want to delete this place?'}, class: 'btn btn-primary loginbutton float-right' %>
+        <%= link_to 'Delete', place_path(comment.place), method: :delete, data: {confirm: 'Are you SURE you want to delete this comment?'}, class: 'btn btn-primary loginbutton float-right' %>
         <% if comment.humanized_rating.present? %>
         <strong><%= comment.humanized_rating %></strong> -
         <% end %>
