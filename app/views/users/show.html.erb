@@ -15,11 +15,12 @@
 </div>
 <br /><br />
 <h1 class="text-center">My Comments</h1>
-<br /><br />
-<% @user.comments.each do |comment| %>
+<br />
 <div class="row col-10 offset-1">
+<% @user.comments.each do |comment| %>
   <div class="col-12 col-sm-6">
     <blockquote>
+      <%= link_to 'Delete', place_path(comment.place), method: :delete, data: {confirm: 'Are you SURE you want to delete this place?'}, class: 'btn btn-primary loginbutton float-right' %>
       <% if comment.humanized_rating.present? %>
       <strong><%= comment.humanized_rating %></strong> -
       <% end %>
@@ -27,5 +28,40 @@
       -- <%= link_to comment.place.name, place_path(comment.place) %>
     </blockquote>
   </div>
-</div>
   <% end %>
+  </div>
+
+<br /><br />
+<h1 class="text-center">My Places</h1>
+<br />
+  <% @user.places.each do |place| %>
+  <div class="booyah-box col-10 offset-1">
+
+    <% if place.photos.present? %>
+      <%= image_tag place.photos.last.picture, class: 'imgboxindex' %>
+    <% end %>
+
+    <h1><%= link_to place.name, place_path(place.id) %></h1>
+    <em><%= place.address %></em>
+    <br />
+    <% if place.user.present? %>
+      <small>Submitted By: <%= place.user.email %></small>
+    <% end %>
+    <br /><br />
+    <p><%= place.description %></p>
+
+    <% if place.comments.present? %>
+      <div class="col-12 clear">
+      <blockquote>
+        <% if place.comments.last.humanized_rating.present? %>
+          <strong><%= place.comments.last.humanized_rating %></strong> -
+        <% end %>
+        <%= place.comments.last.message %>
+        <small><%= place.comments.last.user.email %></small>
+      </blockquote>
+      </div>
+    <% end %>
+
+  </div>
+<% end %>
+  
