@@ -1,57 +1,65 @@
 <div class="booyah-box col-10 offset-1 clearfix">
-<h1><%= @place.name %></h1>
-<em><%= @place.address %></em><br />
-<% if @place.user.present? %>
-    <small>Submitted By: <%= @place.user.email %></small>
-  <% end %><br /><br />
-<p><%= @place.description %></p>
+  <h1><%= @place.name %></h1>
+  <em><%= @place.address %></em><br />
+    <% if @place.user.present? %>
+      <small>Submitted By: <%= @place.user.email %></small>
+    <% end %><br /><br />
+  <p><%= @place.description %></p>
 
-<div class="row">
-<% @place.photos.shuffle.first(4).each do |photo| %>
-<div class="imgbox col-12 col-sm-3">
-  <%= image_tag photo.picture %><br />
-  <medium><strong><em><%= photo.caption %></em></strong></medium><br /><br />
-</div>
-<% end %>
-</div>
+  <div class="row">
+    <% @place.photos.shuffle.first(4).each do |photo| %>
+    
+    <div class="imgbox col-12 col-sm-3">
+      <%= image_tag photo.picture %>
 
-<% if @place.latitude.present? && @place.longitude.present? %>
+      <br />
+      
+      <medium><strong><em>
+        <%= photo.caption %>
+      </em></strong></medium>
 
-  <script>
+      <br />
+      <br />
+    
+    </div>
+    <% end %>
+  </div>
 
-  function initMap() {
-    var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+  <% if @place.latitude.present? && @place.longitude.present? %>
+    <script>
+      function initMap() {
+        var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-        center: myLatLng
-      });
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: myLatLng
+          });
 
-    var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Hello World!'
-      });
-    }
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+          });
+        };
+    </script>
 
-  </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAX0xW-5oI2F8JWzPf_Gra2E1PJpU96k&callback=initMap">
+    </script>
 
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAX0xW-5oI2F8JWzPf_Gra2E1PJpU96k&callback=initMap">
-  </script>
+    <div id="map"></div>
+  <% end %>
 
-  <div id="map"></div>
+  <br />
+  <br />
 
-<% end %>
-
-<br /><br />
-<div class="float-right">
-  <% if current_user && current_user == @place.user %>
-<%= link_to 'Edit Place', edit_place_path(@place), class: 'btn btn-primary loginbutton' %>
-<%= link_to 'Delete Place', place_path(@place), method: :delete, data: {confirm: 'Are you SURE you want to delete this place?'}, class: 'btn btn-primary loginbutton' %>
-<% end %>
-<%= link_to 'Back Home', root_path, class: 'btn btn-primary loginbutton' %>
-</div>
+  <div class="float-right">
+    <% if current_user && current_user == @place.user %>
+      <%= link_to 'Edit Place', edit_place_path(@place), class: 'btn btn-primary loginbutton' %>
+      <%= link_to 'Delete Place', place_path(@place), method: :delete, data: {confirm: 'Are you SURE you want to delete this place?'}, class: 'btn btn-primary loginbutton' %>
+    <% end %>
+    <%= link_to 'Back Home', root_path, class: 'btn btn-primary loginbutton' %>
+  </div>
 </div>
 
 <!-- Modals -->
@@ -66,11 +74,12 @@
         <h4 class="modal-title" id="myModalLabel">Add A Comment</h4>
       </div>
 
-        <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-        <div class="modal-body">
+      <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+      <div class="modal-body">
         <%= f.input :message %>
         <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
       </div>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <%= f.submit "Add A Comment", class: 'btn btn-primary loginbutton' %>
@@ -91,11 +100,12 @@
         <h4 class="modal-title" id="myModalLabel1">Upload A Photo</h4>
       </div>
 
-        <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-        <div class="modal-body">
+      <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+      <div class="modal-body">
         <%= f.input :picture %>
         <%= f.input :caption %>
       </div>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <%= f.submit "Upload Photo", class: 'btn btn-primary loginbutton' %>
@@ -107,26 +117,23 @@
 
 
 <div class="col-10 offset-1">
-<h1 class="float-left">Comments</h1>
-
-  <!-- Button trigger modals -->
+  <h1 class="float-left">Comments</h1>
 
    <button type="button" class="btn btn-primary loginbutton float-right buttonspace" data-toggle="modal" data-target="#myModal1">Upload A Photo</button>
 
     <button type="button" class="btn btn-primary loginbutton float-right" data-toggle="modal" data-target="#myModal">Add A Comment</button>
-
 </div>
 
 <div class="row clear col-10 offset-1">
-<% @place.comments.each do |comment| %>
-  <div class="col-12 col-sm-6">
-    <blockquote>
-      <% if comment.humanized_rating.present? %>
-      <strong><%= comment.humanized_rating %></strong> -
-      <% end %>
-      <%= comment.message %>
-      <small><%= comment.user.email %></small>
-    </blockquote>
-  </div>
+  <% @place.comments.each do |comment| %>
+    <div class="col-12 col-sm-6">
+      <blockquote>
+        <% if comment.humanized_rating.present? %>
+        <strong><%= comment.humanized_rating %></strong> -
+        <% end %>
+        <%= comment.message %>
+        <small><%= comment.user.email %></small>
+      </blockquote>
+    </div>
   <% end %>
-  </div>
+</div>

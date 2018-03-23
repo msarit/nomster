@@ -1,45 +1,49 @@
-<!-- CAROUSEL -->
+<!-- CAROUSEL Start -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
 
-<!-- <div class="row">
-  <div class="carousel-column"> -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="carousel-item active">
-          <%= image_tag 'cakes1.jpg', class: 'd-block img-responsive' %>
-          <div class="carousel-caption d-none d-md-block">
-          <h3>The best places for Cupcakes!</h3>
-        </div>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag 'cakes2.jpg', class: 'd-block img-responsive' %>
-          <div class="carousel-caption d-none d-md-block">
-          <h3>Life is uncertain; Eat dessert first!</h3>
-        </div>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag 'cakes3.jpg', class: 'd-block img-responsive' %>
-          <div class="carousel-caption d-none d-md-block">
-          <h3>There's always room for cake!</h3>
-        </div>
-        </div>
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <%= image_tag 'cakes1.jpg', class: 'd-block img-responsive' %>
+      <div class="carousel-caption d-none d-md-block">
+        <h3>
+          The best places for Cupcakes!
+        </h3>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
-<!--   </div>
-</div> -->
-
+    
+    <div class="carousel-item">
+      <%= image_tag 'cakes2.jpg', class: 'd-block img-responsive' %>
+      <div class="carousel-caption d-none d-md-block">
+        <h3>
+          Life is uncertain; Eat dessert first!
+        </h3>
+      </div>
+    </div>
+    
+    <div class="carousel-item">
+      <%= image_tag 'cakes3.jpg', class: 'd-block img-responsive' %>
+      <div class="carousel-caption d-none d-md-block">
+        <h3>
+          There's always room for cake!
+        </h3>
+      </div>
+    </div>
+  </div>
+  
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 <!-- CAROUSEL END -->
 
 <% @places.each do |place| %>
@@ -51,22 +55,27 @@
 
     <h1><%= link_to place.name, place_path(place.id) %></h1>
     <em><%= place.address %></em>
+    
     <br />
+    
     <% if place.user.present? %>
       <small>Submitted By: <%= place.user.email %></small>
     <% end %>
-    <br /><br />
+    
+    <br />
+    <br />
+    
     <p><%= place.description %></p>
 
     <% if place.comments.present? %>
       <div class="col-12 clear">
-      <blockquote>
-        <% if place.comments.last.humanized_rating.present? %>
-          <strong><%= place.comments.last.humanized_rating %></strong> -
-        <% end %>
-        <%= place.comments.last.message %>
-        <small><%= place.comments.last.user.email %></small>
-      </blockquote>
+        <blockquote>
+          <% if place.comments.last.humanized_rating.present? %>
+            <strong><%= place.comments.last.humanized_rating %></strong> -
+          <% end %>
+          <%= place.comments.last.message %>
+          <small><%= place.comments.last.user.email %></small>
+        </blockquote>
       </div>
     <% end %>
 
@@ -74,5 +83,5 @@
 <% end %>
 
 <div class="digg_pagination col-10 offset-1">
-<%= will_paginate @places %>
+  <%= will_paginate @places %>
 </div>
