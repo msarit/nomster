@@ -1,7 +1,11 @@
 <div class="booyah-box col-10 offset-1">
   <div class="row">
     <div class="col-12 col-md-4 text-center">
-      <%= image_tag 'woman.png', width: '200px', class: 'image' %>
+      <% if @user.gender? %>
+        <%= image_tag 'female.png', width: '200px', class: 'image' %>
+      <% else %>
+        <%= image_tag 'male.png', width: '200px', class: 'image' %>
+      <% end %>
     </div>
     
     <div class="col-12 col-md-8">
@@ -10,11 +14,19 @@
       <br />
       
       <h4>
+        <strong>Username:</strong> <%= @user.username %>
+      </h4>
+
+      <h4>
         <strong>Email Address:</strong> <%= @user.email %>
       </h4>
       
       <h4>
         <strong>Member Since:</strong> <%= @user.created_at.strftime("%B %d %Y") %>
+      </h4>
+
+      <h4>
+        <strong># of Places:</strong> <%= @user.places.count %>
       </h4>
       
       <h4>
@@ -59,37 +71,33 @@
 
 <br />
 
-<% @user.places.each do |place| %>
-  <div class="booyah-box col-10 offset-1">
-    <% if place.photos.present? %>
-      <%= image_tag place.photos.last.picture, class: 'imgboxindex' %>
-    <% end %>
+<div class="row col-10 offset-1">
+  <% @places.each do |place| %>
+    <div class="col-12 col-sm-6 ubooyah">
 
-    <h1><%= link_to place.name, place_path(place.id) %></h1>
-    <em><%= place.address %></em>
-    
-    <br />
-    
-    <% if place.user.present? %>
-      <small>Submitted By: <%= place.user.email %></small>
-    <% end %>
-    
-    <br />
-    <br />
-    
-    <p><%= place.description %></p>
+      <h1><%= link_to place.name, place_path(place.id) %></h1>
+      <em><%= place.address %></em>
+      
+      <br />
 
-    <% if place.comments.present? %>
-      <div class="col-12 clear">
-        <blockquote>
-          <% if place.comments.last.humanized_rating.present? %>
-            <strong><%= place.comments.last.humanized_rating %></strong> -
-          <% end %>
-          <%= place.comments.last.message %>
-          <small><%= place.comments.last.user.email %></small>
-        </blockquote>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+      <strong><%= place.comments.count %></strong> Comments
+
+      <% if place.comments.present? %>
+        <div class="col-12 clear">
+          <blockquote>
+            <% if place.comments.last.humanized_rating.present? %>
+              <strong><%= place.comments.last.humanized_rating %></strong> -
+            <% end %>
+            <%= place.comments.last.message %>
+            <small><%= place.comments.last.user.email %></small>
+          </blockquote>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="digg_pagination col-10 offset-1">
+  <%= will_paginate @places %>
+</div>
   

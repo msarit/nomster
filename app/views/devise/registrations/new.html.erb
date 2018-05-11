@@ -5,7 +5,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :username, required: true, label: 'Your Full Name' %>
+    <%= f.input :email, required: true, autofocus: true, label: 'Your Email'  %>
+    <%= f.input :gender, required: true, collection: [[true, '     Female'], [false, '     Male']], as: :radio_buttons, label: 'Select Your Gender', label_method: :last, item_wrapper_class: :block_radio_button_collection %> 
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
   </div>

@@ -23,6 +23,17 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px;
 }
 
+.ubooyah {
+  -webkit-box-shadow:1px 1px 2px 0 #d0d0d0;
+  -moz-box-shadow:1px 1px 2px 0 #d0d0d0;
+  box-shadow:1px 1px 2px 0 #d0d0d0;
+  background:#fff;
+  border: 1px solid #ccc;
+  border-color:#e4e4e4 #bebebd #bebebd #e4e4e4;
+  margin: 10px 0px 15px 0px;
+  padding: 20px;
+}
+
 .navbar {
   box-shadow: 0px 1px 3px #2a2a2a;
   background-color: #fcfcfc;
@@ -99,9 +110,7 @@ label.control-label.file.optional, label.control-label.file.required {
 }
 
 .imgboxindex {
-  float: right;
-  width: 15%;
-  margin-right: 2.75%;
+  margin: 0px auto;
 }
 
 .carousel-caption {
@@ -119,6 +128,17 @@ label.control-label.file.optional, label.control-label.file.required {
   box-shadow: 0px 3px 8px #2a2a2a;
 }
 
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.carousel-item .img-fluid {
+  width:100%;
+  height:100%;
+}
+
+
 p.alert {
   position: absolute;
   width: 100%;
@@ -127,6 +147,10 @@ p.alert {
 
 .image {
   margin-bottom: 20px;
+}
+
+.block_radio_button_collection {
+  display: block;
 }
 
 /* START - Styling Comments on Detail Page*/
@@ -167,18 +191,18 @@ blockquote p {
     margin-right: 3px; }
   .digg_pagination .disabled {
     color: #999999;
-    border: 1px solid #dddddd; }
+    /*border: 1px solid #dddddd;*/ }
   .digg_pagination .current {
     font-style: normal;
     font-weight: bold;
     background: grey;
     color: white;
-    border: 1px solid grey; }
+    /*border: 1px solid grey;*/ }
   .digg_pagination a {
     font-weight: bold;
     text-decoration: none;
     color: #575857;
-    border: 3px solid #575857; }
+    /*border: 3px solid #575857;*/ }
     .digg_pagination a:hover, .digg_pagination a:focus {
       color: #D04D7B;
       border-color: #D04D7B; }

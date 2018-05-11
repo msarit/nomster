@@ -1,14 +1,16 @@
 <!-- CAROUSEL Start -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="false">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
   </ol>
 
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
-      <%= image_tag 'cakes1.jpg', class: 'd-block img-responsive' %>
+      <img class="d-block img-fluid" src="/images/cupcakes1.jpg" alt="First slide" />
       <div class="carousel-caption d-none d-md-block">
         <h3>
           The best places for Cupcakes!
@@ -17,7 +19,7 @@
     </div>
     
     <div class="carousel-item">
-      <%= image_tag 'cakes2.jpg', class: 'd-block img-responsive' %>
+      <img class="d-block img-fluid" src="/images/cupcakes2.jpg" alt="Second slide" />
       <div class="carousel-caption d-none d-md-block">
         <h3>
           Life is uncertain; Eat dessert first!
@@ -26,10 +28,28 @@
     </div>
     
     <div class="carousel-item">
-      <%= image_tag 'cakes3.jpg', class: 'd-block img-responsive' %>
+      <img class="d-block img-fluid" src="/images/cupcakes3.jpg" alt="Third slide" />
       <div class="carousel-caption d-none d-md-block">
         <h3>
           There's always room for cake!
+        </h3>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="/images/cupcakes4.jpg" alt="Fourth slide" />
+      <div class="carousel-caption d-none d-md-block">
+        <h3>
+          Sweets for the sweet!
+        </h3>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="/images/cupcakes5.jpg" alt="Fifth slide" />
+      <div class="carousel-caption d-none d-md-block">
+        <h3>
+          Dessert is the icing on the cake - literally!
         </h3>
       </div>
     </div>
@@ -48,37 +68,42 @@
 
 <% @places.each do |place| %>
   <div class="booyah-box col-10 offset-1">
+    <div class="row">
+      <div class="col-12 col-md-8">
 
-    <% if place.photos.present? %>
-      <%= image_tag place.photos.last.picture, class: 'imgboxindex' %>
-    <% end %>
+        <h1><%= link_to place.name, place_path(place.id) %></h1>
+        <em><%= place.address %></em>
+        
+        <br />
+        
+        <% if place.user.present? %>
+          <small>Added By: <strong><%= place.user.username %></strong></small>
+        <% end %>
+        
+        <br />
+        <br />
 
-    <h1><%= link_to place.name, place_path(place.id) %></h1>
-    <em><%= place.address %></em>
-    
-    <br />
-    
-    <% if place.user.present? %>
-      <small>Submitted By: <%= place.user.email %></small>
-    <% end %>
-    
-    <br />
-    <br />
-    
-    <p><%= place.description %></p>
+        <p><%= place.description %></p>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <% if place.photos.present? %>
+          <%= image_tag place.photos.last.picture, class: 'imgboxindex' %>
+        <% end %>
+      </div>
+    </div>
 
     <% if place.comments.present? %>
       <div class="col-12 clear">
         <blockquote>
           <% if place.comments.last.humanized_rating.present? %>
-            <strong><%= place.comments.last.humanized_rating %></strong> -
+            <strong><%= place.comments.last.humanized_rating %></strong>:
           <% end %>
-          <%= place.comments.last.message %>
-          <small><%= place.comments.last.user.email %></small>
+          <%= place.comments.last.message %>&nbsp;&nbsp;&nbsp;
+          <small><strong><em>&bull;  <%= place.comments.last.user.username %></em></strong></small>
         </blockquote>
       </div>
     <% end %>
-
   </div>
 <% end %>
 
