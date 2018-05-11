@@ -6,7 +6,7 @@ class Place < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
   
-  validates :name, presence: { message: "The NAME of the place is required." }, length: { minimum: 3, too_short: "Name must be at least %{count} characters.", maximum: 70 } 
+  validates :name, presence: { message: "The NAME of the place is required." }, length: { minimum: 3,  maximum: 70 } 
   validates :address, presence: { message: "The ADDRESS of the place is required." }, length: { maximum: 140 }
-  validates :description, presence: { message: "The DESCRIPTION of the place is required." }, length: { minimum: 20, too_short: "Description too short.", maximum: 300 }
+  validates :description, presence: { message: "The DESCRIPTION of the place is required." }, length: { minimum: 20,  maximum: 500 }
 end

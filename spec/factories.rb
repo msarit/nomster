@@ -15,7 +15,7 @@ FactoryBot.define do
       "PlaceName#{n}"
     end
     sequence :description do |d|
-      "PlaceDescription#{d}"
+      "PlaceDescription#{d}XXX"
     end
     sequence :address do |a|
       "PlaceAddress#{a}"

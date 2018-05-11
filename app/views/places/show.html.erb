@@ -9,8 +9,8 @@
   <div class="row">
     <% @place.photos.shuffle.first(4).each do |photo| %>
     
-    <div class="imgbox col-12 col-sm-3">
-      <%= image_tag photo.picture %>
+    <div class="col-12 col-md-3">
+      <%= image_tag photo.picture, class: 'imgbox' %>
 
       <br />
       

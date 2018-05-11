@@ -95,7 +95,12 @@ label.control-label.file.optional, label.control-label.file.required {
   display: none;
 }
 
-.imgbox:nth-of-type(2),
+.imgbox {
+  display: block;
+  margin: 0 auto;
+}
+
+/*.imgbox:nth-of-type(2),
 .imgbox:nth-of-type(3),
 .imgbox:nth-of-type(4) {
   float: left;
@@ -111,7 +116,7 @@ label.control-label.file.optional, label.control-label.file.required {
 
 .imgboxindex {
   margin: 0px auto;
-}
+}*/
 
 .carousel-caption {
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
