@@ -9,19 +9,19 @@
   <div class="row">
     <% @place.photos.shuffle.first(4).each do |photo| %>
     
-    <div class="col-12 col-md-3">
-      <%= image_tag photo.picture, class: 'imgbox' %>
-
-      <br />
-      
-      <medium><strong><em>
-        <%= photo.caption %>
-      </em></strong></medium>
-
-      <br />
-      <br />
-    
-    </div>
+      <div class="col-12 col-md-3">
+        <%= image_tag photo.picture, class: 'imgbox' %>
+        <br />
+        <medium class="text-center"><strong><em>
+          <%= photo.caption %>
+        </em></strong></medium>
+        <br />
+        <% if current_user && current_user == @place.user %>
+          <button class="btn-sm imgbox loginbutton"><%= link_to 'Delete Photo', '#', :method=> :delete, data: {confirm: 'Are you sure?'} %></button>
+        <% end %>
+        <br />
+        <br />
+      </div>
     <% end %>
   </div>
 

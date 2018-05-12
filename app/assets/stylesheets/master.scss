@@ -95,9 +95,14 @@ label.control-label.file.optional, label.control-label.file.required {
   display: none;
 }
 
-.imgbox {
+.imgbox, .imgboxindex {
   display: block;
   margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+  display: block;
 }
 
 /*.imgbox:nth-of-type(2),

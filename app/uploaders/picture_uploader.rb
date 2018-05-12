@@ -28,7 +28,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process :auto_orient
+  process :auto_orient
   process resize_to_fill: [150, 150]
 
   # process scale: [200, 300]
