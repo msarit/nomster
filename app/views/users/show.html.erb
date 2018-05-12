@@ -45,7 +45,9 @@
 <br />
 <br />
 
-<h1 class="text-center">My Comments</h1>
+<% if @user.comments.present? %>
+  <h1 class="text-center">My Comments</h1>
+<% end %>
 
 <br />
 
@@ -53,12 +55,12 @@
   <% @user.comments.each do |comment| %>
     <div class="col-12 col-sm-6">
       <blockquote>
-        <%= link_to 'Delete', place_path(comment.place), method: :delete, data: {confirm: 'Are you SURE you want to delete this comment?'}, class: 'btn btn-primary loginbutton float-right' %>
+        <%= link_to 'Delete', place_comment_path(comment.place, comment), method: :delete, data: {confirm: 'Are you SURE you want to delete this comment?'}, class: 'btn btn-primary loginbutton float-right' %>
         <% if comment.humanized_rating.present? %>
         <strong><%= comment.humanized_rating %></strong> -
         <% end %>
         <%= comment.message %><br />
-        -- <%= link_to comment.place.name, place_path(comment.place) %>
+        <%= link_to comment.place.name, place_path(comment.place) %>
       </blockquote>
     </div>
   <% end %>
@@ -67,7 +69,9 @@
 <br />
 <br />
 
-<h1 class="text-center">My Places</h1>
+<% if @places.present? %>
+  <h1 class="text-center">My Places</h1>
+<% end %>
 
 <br />
 
@@ -80,7 +84,11 @@
       
       <br />
 
-      <strong><%= place.comments.count %></strong> Comments
+      <% if place.comments.count == 1 %>
+        <strong><%= place.comments.count %></strong> Comment
+      <% else %>
+        <strong><%= place.comments.count %></strong> Comments
+      <% end %>
 
       <% if place.comments.present? %>
         <div class="col-12 clear">
@@ -89,7 +97,7 @@
               <strong><%= place.comments.last.humanized_rating %></strong> -
             <% end %>
             <%= place.comments.last.message %>
-            <small><%= place.comments.last.user.email %></small>
+            <small><strong><em><%= place.comments.last.user.username %></em></strong></small>
           </blockquote>
         </div>
       <% end %>

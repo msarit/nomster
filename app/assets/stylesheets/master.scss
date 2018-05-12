@@ -11,6 +11,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .booyah-box {
   -webkit-box-shadow:1px 1px 2px 0 #d0d0d0;
   -moz-box-shadow:1px 1px 2px 0 #d0d0d0;

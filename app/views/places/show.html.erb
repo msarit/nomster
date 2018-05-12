@@ -2,7 +2,7 @@
   <h1><%= @place.name %></h1>
   <em><%= @place.address %></em><br />
     <% if @place.user.present? %>
-      <small>Added By: <strong><%= @place.user.username %></strong></small>
+      Added By: <strong><%= @place.user.username %></strong>
     <% end %><br /><br />
   <p><%= @place.description %></p>
 
@@ -14,11 +14,11 @@
         <br />
         <medium class="text-center"><strong><em>
           <%= photo.caption %>
+          <br />
+          <% if current_user && current_user == @place.user %>
+            <%= link_to '<i class="fa fa-trash"></i> Delete Photo'.html_safe, place_photo_path(@place, photo), class: 'imgbox', :method=> :delete, data: {confirm: 'Are you SURE you want to delete this photo?'} %>
+          <% end %>
         </em></strong></medium>
-        <br />
-        <% if current_user && current_user == @place.user %>
-          <button class="btn-sm imgbox loginbutton"><%= link_to 'Delete Photo', '#', :method=> :delete, data: {confirm: 'Are you sure?'} %></button>
-        <% end %>
         <br />
         <br />
       </div>
@@ -117,7 +117,9 @@
 
 
 <div class="col-10 offset-1">
-  <h1 class="float-left">Comments</h1>
+  <% if @place.comments.present? %>
+    <h1 class="float-left">Comments</h1>
+  <% end %>
 
    <button type="button" class="btn btn-primary loginbutton float-right buttonspace" data-toggle="modal" data-target="#myModal1">Upload A Photo</button>
 
