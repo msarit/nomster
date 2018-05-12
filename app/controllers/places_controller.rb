@@ -24,7 +24,9 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.find(params[:id])
-    return render_not_found if @place.blank?
+    if @place.blank?
+      return render plain: 'Not Found', status: :not_found
+    end
 
     @comment = Comment.new
     @photo = Photo.new
@@ -36,8 +38,7 @@ class PlacesController < ApplicationController
     return render_not_found if @place.blank?
 
     if @place.user != current_user
-      return render_not_found(:forbidden)
-      # return render plain: 'Not Allowed!', status: :forbidden
+      return render plain: 'Not Allowed!', status: :forbidden
     end
   end
 
@@ -47,8 +48,7 @@ class PlacesController < ApplicationController
     return render_not_found if @place.blank?
 
     if @place.user != current_user
-      return render_not_found(:forbidden)
-      # return render plain: 'Not Allowed!', status: :forbidden
+      return render plain: 'Not Allowed!', status: :forbidden
     end
     
     @place.update_attributes(place_params)
@@ -66,8 +66,7 @@ class PlacesController < ApplicationController
     return render_not_found if @place.blank?
 
     if @place.user != current_user
-      return render_not_found(:forbidden)
-      # return render plain: 'Not Allowed!', status: :forbidden
+      return render plain: 'Not Allowed!', status: :forbidden
     end
 
     @place.destroy

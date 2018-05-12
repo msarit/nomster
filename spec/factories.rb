@@ -22,4 +22,12 @@ FactoryBot.define do
     end
     association :user
   end
+
+  factory :comment do
+    sequence :message do |n|
+      "This is my Comment #{n}"
+    end
+    association :user
+    association :place
+  end
 end
