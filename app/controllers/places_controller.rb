@@ -23,7 +23,7 @@ class PlacesController < ApplicationController
 
 
   def show
-    @place = Place.find(params[:id])
+    @place = Place.find_by_id(params[:id])
     if @place.blank?
       return render plain: 'Not Found', status: :not_found
     end
@@ -34,7 +34,7 @@ class PlacesController < ApplicationController
 
 
   def edit
-    @place = Place.find(params[:id])
+    @place = Place.find_by_id(params[:id])
     return render_not_found if @place.blank?
 
     if @place.user != current_user
@@ -44,7 +44,7 @@ class PlacesController < ApplicationController
 
 
   def update
-    @place = Place.find(params[:id])
+    @place = Place.find_by_id(params[:id])
     return render_not_found if @place.blank?
 
     if @place.user != current_user
@@ -54,7 +54,7 @@ class PlacesController < ApplicationController
     @place.update_attributes(place_params)
 
     if @place.valid?
-      redirect_to root_path
+      redirect_to place_path(@place)
     else
         render :edit, status: :unprocessable_entity
     end
@@ -62,7 +62,7 @@ class PlacesController < ApplicationController
 
 
   def destroy
-    @place = Place.find(params[:id])
+    @place = Place.find_by_id(params[:id])
     return render_not_found if @place.blank?
 
     if @place.user != current_user

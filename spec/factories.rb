@@ -27,7 +27,12 @@ FactoryBot.define do
     sequence :message do |n|
       "This is my Comment #{n}"
     end
+    rating { Comment::RATINGS.values.shuffle.first }
     association :user
     association :place
+  end
+
+  factory :photo do
+    picture { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'pictures', 'creative.jpg'), 'image/jpeg') }
   end
 end
