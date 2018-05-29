@@ -1,5 +1,4 @@
 require 'rails_helper'
-require File.expand_path('../../config/environment', __FILE__)
 
 RSpec.describe Comment, type: :model do
   describe "Factories" do
