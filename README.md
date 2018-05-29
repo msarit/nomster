@@ -1,24 +1,17 @@
-# README
+## Silver Spring CupCakeries
+A Yelp-clone that features a crowd-sourced list of bakeries in the Silver Spring MD area. The app integrates with the Google Map API.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Features
+* Built on Rails
+* Mobile-responsive
+* User Authentication: Devise gem
+* Picture Uploads: Carrierwave and MiniMagick gems
 
-Things you may want to cover:
+## Build status
+(coming soon)
 
-* Ruby version
+## Screenshots
+![alt tag](https://image.ibb.co/cgqGFo/screenshot_sscupcakeries.png)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Credits
+* [The Firehose Project](https://thefirehoseproject.com)
