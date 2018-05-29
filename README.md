@@ -8,7 +8,7 @@ A Yelp-clone that features a crowd-sourced list of bakeries in the Silver Spring
 * Picture Uploads: Carrierwave and MiniMagick gems
 
 ## Build status
-(coming soon)
+[![Build Status](https://travis-ci.org/msarit/nomster.svg?branch=master)](https://travis-ci.org/msarit/nomster)
 
 ## Screenshots
 ![alt tag](https://image.ibb.co/cgqGFo/screenshot_sscupcakeries.png)
