@@ -1,6 +1,4 @@
-<kbd>
-<img src="https://image.ibb.co/cgqGFo/screenshot_sscupcakeries.png">
-</kbd>
+![Screenshot](https://image.ibb.co/midP7d/github_cupcakeries.png)
 
 ## Silver Spring CupCakeries
 A Yelp-clone that features a crowd-sourced list of bakeries in the Silver Spring MD area. The app integrates with the Google Map API.
