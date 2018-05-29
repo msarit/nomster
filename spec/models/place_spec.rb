@@ -1,4 +1,5 @@
 require 'rails_helper'
+require File.expand_path('../../config/environment', __FILE__)
 
 RSpec.describe Place, type: :model do
   it "will not be valid with an empty name" do
