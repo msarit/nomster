@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   </head>
 
   <body>
@@ -22,7 +24,7 @@
         <ul class="navbar-nav mr-auto mt-2 mt-md-0">
           <li class="nav-item">
             <%= link_to new_place_path, class: 'nav-link' do %>
-              <i class="fa fa-plus-circle"></i> Add New Place
+              <i class="fas fa-plus-circle"></i> Add New Place
             <% end %>
           </li>
         </ul>
@@ -61,6 +63,28 @@
     <% end %>
 
     <%= yield %>
+
+    <div id="footer">
+      <div class="container">
+        <div class="row text-center">
+
+          <h5>Proudly Built By <a href="https://aritamana.com">Arit Amana</a></h5>
+          <%= link_to 'https://github.com/msarit',target: '_blank' do%>
+            <span class="fab fa-github-square fa-2x footer-icon"></span>
+          <% end %>
+          
+          <%= link_to 'https://linkedin.com/in/aritamana',target: '_blank' do%>
+            <span class="fab fa-linkedin fa-2x footer-icon"></span>
+          <% end %>
+          
+          <%= link_to 'https://medium.com/@msarit',target: '_blank' do%>
+            <span class="fab fa-medium fa-2x footer-icon"></span>
+          <% end %>
+        </div>
+      </div>
+      <br />
+      <br />
+    </div>
   
   </body>
 </html>

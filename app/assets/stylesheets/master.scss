@@ -1,5 +1,4 @@
 @import "bootstrap";
-@import "font-awesome";
 
 body {
   background: image_url('pink_rice.png');
@@ -166,6 +165,34 @@ p.alert {
 .block_radio_button_collection {
   display: block;
 }
+
+/* FOOTER Styles: Start */
+
+#footer {
+  background-color: #808080;
+  margin-top: 40px;
+  padding-top: 20px;
+  color: white;
+}
+
+#footer h5 {
+  margin-bottom: 15px;
+}
+
+#footer a {
+  color: white;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  color: white;
+}
+
+.footer-icon {
+  margin-right: 10px;
+}
+
+/* FOOTER Styles: END */
 
 /* START - Styling Comments on Detail Page*/
 
