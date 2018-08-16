@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :place
   after_create :send_comment_email
 
+  validates :message, length: { minimum: 3, maximum: 140 }
+
   RATINGS = {
     'One Star': '1_star',
     'Two Stars': '2_stars',
