@@ -65,3 +65,9 @@ gem 'carrierwave', '~> 1.0'
 gem 'fog-aws'
 gem 'mini_magick', '~> 4.8'
 gem 'travis', '~> 1.8', '>= 1.8.8'
+
+# The below was added to deploy on Vultr
+gem 'capistrano', '~> 3.7', '>= 3.7.1'
+gem 'capistrano-rails', '~> 1.2'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rbenv', '~> 2.1'
